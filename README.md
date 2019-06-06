@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* rails new abs_api --skip-test --api --skip-sprockets --skip-helpers
 
-Things you may want to cover:
+* Gemfile.rb
+	gem "graphql"
+	gem 'graphiql-rails'
 
-* Ruby version
+* bundle install
 
-* System dependencies
+* rails g graphql:install
 
-* Configuration
+* rails g model entity name:string cin:string transactions:has_many
+* rails g model transaction name:string type:string originator:belongs_to
 
-* Database creation
+* rails g graphql:object Entity name:String cin:String transactions:[Transaction]
+* rails g graphql:object Transaction name:String type:String originator:Entity
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Update QueryTypes for added models
